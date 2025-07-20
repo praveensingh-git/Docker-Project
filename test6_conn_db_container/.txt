@@ -1,0 +1,6 @@
+DB_HOST = "host.docker.internal"  #Connecting container with local pgAdmin
+
+DB_HOST = "172.17.0.2"  #Connecting container with DB running in another container
+
+DB_HOST = "mysql_container"  #Connecting container with DB running in container on same network
+               ↕ here we are giving container name as DB_HOST

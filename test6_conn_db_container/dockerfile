@@ -1,0 +1,10 @@
+FROM python
+
+WORKDIR /app
+
+COPY ./test6.py .
+
+RUN pip install psycopg2.binary
+
+CMD [ "python","test6.py" ]
+

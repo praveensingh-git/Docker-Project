@@ -1,0 +1,25 @@
+services:
+  pgsql:
+    image: postgres
+    environment:
+    - POSTGRES_DB=praveen
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=Praveen1#
+
+    container_name: pgsql_container
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "praveen", "-h", "localhost", "-p", "5432"]
+      interval: 1m30s
+      timeout: 30s
+      retries: 5
+      start_period: 10s
+  mypythonapp:
+    build: ./
+    container_name: mypythonapp
+    volumes:
+      - ./server.txt:/app/server.txt
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    stdin_open: true
+    tty: true

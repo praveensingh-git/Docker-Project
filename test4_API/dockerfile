@@ -1,0 +1,9 @@
+FROM python
+
+WORKDIR /app
+
+COPY ./test4.py .
+
+RUN pip install requests
+
+CMD [ "python", "test4.py" ]
